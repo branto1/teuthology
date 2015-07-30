@@ -38,7 +38,7 @@ is_vm = lambda x: x.startswith('vpm') or x.startswith('ubuntu@vpm')
 is_arm = lambda x: x.startswith('tala') or x.startswith(
     'ubuntu@tala') or x.startswith('saya') or x.startswith('ubuntu@saya')
 
-hostname_expr_templ = '(?P<user>.*@)?(?P<shortname>.*)\.{lab_domain}'
+hostname_expr_templ = '(?P<user>.*@)?(?P<shortname>.*)'
 
 
 def canonicalize_hostname(hostname, user='ubuntu'):
@@ -58,7 +58,7 @@ def canonicalize_hostname(hostname, user='ubuntu'):
 
     user_at = user_.strip('@') + '@' if user_ else ''
 
-    ret = '{user_at}{short}.{lab_domain}'.format(
+    ret = '{user_at}{short}'.format(
         user_at=user_at,
         short=shortname,
         lab_domain=config.lab_domain,

@@ -356,6 +356,7 @@ def check_ceph_data(ctx, config):
     Check for old /var/lib/ceph directories and detect staleness.
     """
     log.info('Checking for old /var/lib/ceph...')
+    return
     processes = ctx.cluster.run(
         args=['test', '!', '-e', '/var/lib/ceph'],
         wait=False,
